@@ -1,0 +1,11 @@
+[config]
+
+name="MapPlugin"
+binary_type="local"
+binary="MapPlugin.aar"
+
+[dependencies]
+
+local=[]
+remote=["com.google.android.gms:play-services-maps:18.1.0"]
+custom_maven_repos=[]
