@@ -69,6 +69,11 @@ public class MapPlugin extends GodotPlugin {
 
     @UsedByGodot
     public void setLocation(float lat, float lng) {
+        setLocation(lat, lng, 20f);
+    }
+
+    @UsedByGodot
+    public void setLocation(float lat, float lng, float zoom) {
         if (mapView == null) {
             return;
         }
@@ -80,7 +85,7 @@ public class MapPlugin extends GodotPlugin {
                         .position(position)
                 );
 
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 20));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, zoom));
 
                 googleMap.setOnCameraMoveListener(() -> {
                     LatLng midLatLng = googleMap.getCameraPosition().target;
@@ -114,7 +119,6 @@ public class MapPlugin extends GodotPlugin {
 
             mapView.onCreate(mapViewBundle);
 
-            mapView.bringToFront();
             layout.addView(mapView, mapLayoutParams);
         });
     }
